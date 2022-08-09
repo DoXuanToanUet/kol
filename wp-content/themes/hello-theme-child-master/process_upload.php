@@ -141,6 +141,8 @@ wp_update_attachment_metadata(
 	$attachment_id,
 	wp_generate_attachment_metadata( $attachment_id, $upload[ 'file' ] )
 );
+
+// Update avatar
 $current_user = wp_get_current_user();
 var_dump($current_user);
 update_field('tt_userImage', $attachment_id ,'user_' . $current_user->ID);
