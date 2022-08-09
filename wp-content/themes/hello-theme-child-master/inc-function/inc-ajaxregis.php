@@ -96,9 +96,34 @@ function regisForm(){
 }
 
 
-add_action('wp_ajax_avatar_custom', 'avatar_custom');
-add_action('wp_ajax_nopriv_avatar_custom', 'avatar_custom');
-function avatar_custom(){
-    echo "t";
-    die();
-}
+// add_action('wp_ajax_avatar_custom', 'avatar_custom');
+// add_action('wp_ajax_nopriv_avatar_custom', 'avatar_custom');
+// function avatar_custom(){
+//     $upload_dir = wp_upload_dir();
+
+// 	if ( isset( $_FILES[ 'misha_file' ] ) ) {
+// 		$path = $upload_dir[ 'path' ] . '/' . basename( $_FILES[ 'misha_file' ][ 'name' ] );
+
+// 		if( move_uploaded_file( $_FILES[ 'misha_file' ][ 'tmp_name' ], $path ) ) {
+// 			echo $upload_dir[ 'url' ] . '/' . basename( $_FILES[ 'misha_file' ][ 'name' ] );
+// 		}
+// 	}
+// 	die;
+// }
+
+// add_action( 'wp_ajax_mishaupload', 'misha_file_upload' );
+// add_action( 'wp_ajax_nopriv_mishaupload', 'misha_file_upload' );
+
+// function misha_file_upload(){
+
+// 	$upload_dir = wp_upload_dir();
+
+// 	if ( isset( $_FILES[ 'misha_file' ] ) ) {
+// 		$path = $upload_dir[ 'path' ] . '/' . basename( $_FILES[ 'misha_file' ][ 'name' ] );
+
+// 		if( move_uploaded_file( $_FILES[ 'misha_file' ][ 'tmp_name' ], $path ) ) {
+// 			echo $upload_dir[ 'url' ] . '/' . basename( $_FILES[ 'misha_file' ][ 'name' ] );
+// 		}
+// 	}
+// 	die;
+// }

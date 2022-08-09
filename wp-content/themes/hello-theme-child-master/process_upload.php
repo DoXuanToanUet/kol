@@ -117,35 +117,52 @@ var_dump( $upload );
 if( ! empty( $upload[ 'error' ] ) ) {
 	wp_die( $upload[ 'error' ] );
 }
+$image_info = getimagesize( $upload[ 'url' ] );
+echo "<pre>";
+var_dump($image_info);
+echo "</pre>";
+$image_width = $image_info[0];
+$image_height = $image_info[1];
 
-// it is time to add our uploaded image into WordPress media library
-$attachment_id = wp_insert_attachment(
-	array(
-		'guid'           => $upload[ 'url' ],
-		'post_mime_type' => $upload[ 'type' ],
-		'post_title'     => basename( $upload[ 'file' ] ),
-		'post_content'   => '',
-		'post_status'    => 'inherit',
-	),
-	$upload[ 'file' ]
-);
+if($image_width > "400" || $image_height > "400") {
+    // echo "Error : image size must be 400 x 400 pixels.";
+	$url = get_permalink( get_option('woocommerce_myaccount_page_id') );
+	wp_safe_redirect($url);
+    exit;
+}else{
+	// it is time to add our uploaded image into WordPress media library
+	$attachment_id = wp_insert_attachment(
+		array(
+			'guid'           => $upload[ 'url' ],
+			'post_mime_type' => $upload[ 'type' ],
+			'post_title'     => basename( $upload[ 'file' ] ),
+			'post_content'   => '',
+			'post_status'    => 'inherit',
+		),
+		$upload[ 'file' ]
+	);
 
-if( is_wp_error( $attachment_id ) || ! $attachment_id ) {
-	wp_die( 'Upload error.' );
+	if( is_wp_error( $attachment_id ) || ! $attachment_id ) {
+		wp_die( 'Upload error.' );
+	}
+
+	// update medatata, regenerate image sizes
+	require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+	wp_update_attachment_metadata(
+		$attachment_id,
+		wp_generate_attachment_metadata( $attachment_id, $upload[ 'file' ] )
+	);
+
+	// Update avatar
+	$current_user = wp_get_current_user();
+	var_dump($current_user);
+	update_field('tt_userImage', $attachment_id ,'user_' . $current_user->ID);
+	// just redirect to the uploaded file
+	$url = get_permalink( get_option('woocommerce_myaccount_page_id') );
+	wp_safe_redirect($url);
+	exit;
+
 }
 
-// update medatata, regenerate image sizes
-require_once( ABSPATH . 'wp-admin/includes/image.php' );
 
-wp_update_attachment_metadata(
-	$attachment_id,
-	wp_generate_attachment_metadata( $attachment_id, $upload[ 'file' ] )
-);
-
-// Update avatar
-$current_user = wp_get_current_user();
-var_dump($current_user);
-update_field('tt_userImage', $attachment_id ,'user_' . $current_user->ID);
-// just redirect to the uploaded file
-// wp_safe_redirect( $upload[ 'url' ] );
-exit;

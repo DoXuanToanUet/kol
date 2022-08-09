@@ -86,31 +86,69 @@ $allowed_html = array(
 
 ?>
 <!-- Custom show dashboard infomation  -->
-<div class="ac-avatar">
-	<h2>Avatar</h2>
-	<?php $current_user = wp_get_current_user(); ?>
-	<div class="avatar-row d-flex align-items-center">
-		<div class="avatar-img pe-3">
-			<img id="avtChange" src="<?php the_field('tt_userImage','user_'. $current_user->ID); ?>" />
+<?php $current_user = wp_get_current_user(); ?>
+<?php if ( ! $current_user->exists() ) : return; else:?>
+	<div class="ac-avatar">
+		<p>Avatar</p>
+		
+		<div class="avatar-row d-flex align-items-center">
+			<div class="avatar-img pe-3">
+				<img id="avtChange" src="<?php the_field('tt_userImage','user_'. $current_user->ID); ?>" />
+			</div>
+			<div class="avatar-button">
+				<!-- <form action="" method="post"  enctype="multipart/form-data" id="test">
+					<input type="file" name="pet_avatar" id="FileAttachment" class="upload"/>
+					<button>Change</button>
+					<input type="submit" name="avatar_save" class="tt" />
+				</form>	 -->
+				<form action="<?php echo get_stylesheet_directory_uri(); ?>/process_upload.php" method="post" enctype="multipart/form-data">
+					<input type="file" name="profile_picture"  id="profile_picture"/>
+					<label for="profile_picture"><a  class="btn btn-outline-primary">Upload</a></label>
+					<span class="px-2">Size:400X400</span>
+					<input type="submit"  class="btn btn-outline-primary" name="submit" value="Save" />
+				</form> 
+			</div>
 		</div>
-		<div class="avatar-button">
-			<form action="t.php" method="post"  enctype="multipart/form-data" id="test">
-				<input type="file" name="pet_avatar" id="FileAttachment" class="upload"/>
-				<button>Change</button>
-				<input type="submit" name="avatar_save" class="tt" />
-				
-			</form>	
+		<div class="profile-info">
+			<div class="row py-3">
+				<div class="col">
+					<div class="mb-3">
+						<label for="lastname" class="form-label">Họ</label>
+						<input type="text" class="form-control" id="lastname"  readonly aria-describedby="emailHelp" value="<?php echo $current_user->user_lastname;?>">
+					</div>
+				</div>
+				<div class="col">
+					<div class="mb-3">
+						<label for="fistname" class="form-label">Tên</label>
+						<input type="text" class="form-control" id="fistname" readonly aria-describedby="emailHelp"  value="<?php echo $current_user->user_firstname;?>">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="mb-3">
+						<label for="fullname" class="form-label">Tên hiển thị</label>
+						<input type="text" class="form-control" id="fullname" readonly aria-describedby="emailHelp" value="<?php echo $current_user->display_name;?>">
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col">
+					<div class="mb-3">
+						<label for="email" class="form-label">Email</label>
+						<input type="email" class="form-control" id="email" readonly aria-describedby="emailHelp" value="<?php echo $current_user->user_email;?>">
+					</div>
+				</div>
+			</div>
+			<a href="<?php echo esc_url( wc_get_account_endpoint_url('edit-account') ); ?>" class="btn btn-outline-primary">Sửa thông tin</a>
 		</div>
 	</div>
-	
-
-</div>
-<form action="<?php echo get_stylesheet_directory_uri(); ?>/process_upload.php" method="post" enctype="multipart/form-data">
-	Your Photo: <input type="file" name="profile_picture" />
-	<input type="submit" name="submit" value="Submit" />
-</form>
+<?php endif; ?>
 <?php 
-$upload_dir = wp_upload_dir();
-var_dump($upload_dir);
+// $upload_dir = wp_upload_dir();
+// echo "<pre>";
+// var_dump($upload_dir['baseurl'].'/profile');
+// echo "</pre>";
+?>
 
  

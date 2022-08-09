@@ -59,9 +59,17 @@
         }
     }
 }
-
-
-
+#profile_picture{
+    position: absolute;
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+.woocommerce-form.woocommerce-form-login.login{
+    max-width: 500px;
+    margin: 0px auto;
+}
 @media (max-width:575px){
     .woocommerce-MyAccount-navigation{
         border:none;

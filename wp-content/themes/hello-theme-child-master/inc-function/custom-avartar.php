@@ -41,9 +41,12 @@ function tsm_acf_profile_avatar( $avatar, $id_or_email, $size, $default, $alt ) 
     // Get the file size
     $image_url  = wp_get_attachment_image_src( $image_id, 'thumbnail' ); // Set image size by name
     // Get the file url
-    $avatar_url = $image_url[0];
+    if ( $image_url  ){
+        $avatar_url = $image_url[0];
+        $avatar = '<img alt="' . $alt . '" src="' . $avatar_url  . '" class="avatar avatar-' . $size . '" height="' . $size . '" width="' . $size . '"/>';
+    }
+   
     // Get the img markup
-    $avatar = '<img alt="' . $alt . '" src="' . $avatar_url . '" class="avatar avatar-' . $size . '" height="' . $size . '" width="' . $size . '"/>';
 
     // Return our new avatar
     return $avatar;

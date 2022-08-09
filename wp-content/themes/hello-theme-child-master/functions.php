@@ -132,9 +132,11 @@ function add_theme_scripts()
 
     wp_enqueue_style('devMainCss', get_stylesheet_directory_uri() . '/assets/css/custom.css', array(), $version, 'all');
     wp_enqueue_style('BootstrapCss', get_stylesheet_directory_uri() . '/assets/css/bootstrap.min.css', array(), $version, 'all');
+    wp_enqueue_style('DataTableCss', get_stylesheet_directory_uri() . '/assets/plugin/xls/jquery.dataTables.min.css', array(), $version, 'all');
   
     wp_enqueue_script('devMainJS', get_stylesheet_directory_uri() . '/assets/js/main.js', array(), $version, true);
     wp_enqueue_script('BootstrapJs', get_stylesheet_directory_uri() . '/assets/js/bootstrap.min.js', array(), $version, true);
+    wp_enqueue_script('DataTableJs', get_stylesheet_directory_uri() . '/assets/plugin/xls/jquery.dataTables.min.js', array(), $version, true);
 
 }
 

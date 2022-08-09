@@ -124,54 +124,35 @@
             });
           
         })
-        $("#FileAttachment").change(function () {
-            if (this.files && this.files[0]) {
-                var reader = new FileReader();
-                reader.onload = imageIsLoaded;
-                reader.readAsDataURL(this.files[0]);
-            }
-        });
-        function imageIsLoaded(e) {
-            $('#avtChange').attr('src', e.target.result);
-            $('.box-photo .icon-text').css('display', 'none');
-        }
-
-        
-        // $(document).on('submit', '#test',function(e){
-        //     e.preventDefault();
-        //     // console.log("kol_select");
+        // function imageIsLoaded(e) {
+        //     $('#avtChange').attr('src', e.target.result);
+        //     $('.box-photo .icon-text').css('display', 'none');
+        // }
+        // $(document).on('change','#FileAttachment',function () {
+        //     if (this.files && this.files[0]) {
+        //         var reader = new FileReader();
+        //         reader.onload = imageIsLoaded;
+        //         reader.readAsDataURL(this.files[0]);
+        //     }
         //     var ajax_url = $("input[name='url_ajax']").val();
-        //     fileInput = $('input[name="pet_avatar"]').val();
-        //     console.log(fileInput);
+        //     const fileImg = this.files[0];
+        //     console.log(fileImg);
+        //     // const formData = new FormData();
+		// 	// formData.append( 'misha_file', fileImg );
+        //     // console.log(formData);
         //     $.ajax({
         //         type: "post",
-        //         dataType: "json",
+        //         dataType: "html",
         //         async: true,
         //         url: ajax_url,
         //         data: {
         //             action:'avatar_custom',
-        //             // kol_select: kol_select,
+        //             misha_file: fileImg,
         //         },
         //         beforeSend: function () {
         //         },
         //         success: function (response) {
         //             console.log(response);
-        //             // if( response.success == false ){
-        //             //     $('.devRegis-alert').html(`* ${response.data.showdata}`);
-        //             // } else if(response.success == true ){
-        //             //     var base_url = window.location.origin;
-        //             //     window.location.href = base_url + '/tai-khoan';
-        //             //     // console.log(object);
-        //             // }
-        //             // if( response.success == true ){
-        //             //     $('.kol_alert').show();
-        //             //     $('.kol_alert').addClass(response.data.class);
-        //             //     $('.kol_alert').html(response.data.showdata);
-        //             // }
-        //             // setTimeout(() => {
-        //             //     $('.kol_alert').removeClass(response.data.class);
-        //             //     $('.kol_alert').hide();
-        //             // }, 2000);
         //         },
         //         error: function (jqXHR, textStatus, errorThrown) {
         //             //Làm gì đó khi có lỗi xảy ra
@@ -179,7 +160,11 @@
         //         }
         //     });
           
-        // })
+        // });
+       
+
+    
+      
     })
     
 })(jQuery);
