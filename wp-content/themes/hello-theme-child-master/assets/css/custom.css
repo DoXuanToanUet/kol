@@ -1,0 +1,64 @@
+.kol_alert {
+  display: none;
+}
+
+.devRegis-item {
+  margin-bottom: 10px;
+}
+
+.devRegis-alert {
+  padding: 4px 0px;
+  color: red;
+}
+
+.show-password-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.devRegis-item {
+  position: relative;
+}
+
+.devRegis-item .show-password-icon {
+  position: absolute;
+  right: 8px;
+  top: calc(50% + 8px);
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.woocommerce-MyAccount-navigation {
+  border-right: 2px solid #f3f4f8;
+}
+
+.woocommerce-MyAccount-navigation ul {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.woocommerce-MyAccount-navigation li.is-active a {
+  background: #f3f4f8;
+}
+
+.woocommerce-MyAccount-navigation li a {
+  color: #000;
+  display: block;
+  padding: 15px 10px;
+  border-radius: 6px;
+}
+
+.ac-avatar .avatar-img img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+@media (max-width: 575px) {
+  .woocommerce-MyAccount-navigation {
+    border: none;
+  }
+}
+/*# sourceMappingURL=custom.css.map */
