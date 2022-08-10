@@ -156,11 +156,11 @@ if($image_width > "400" || $image_height > "400") {
 
 	// Update avatar
 	$current_user = wp_get_current_user();
-	var_dump($current_user);
+	// var_dump($current_user);
 	update_field('tt_userImage', $attachment_id ,'user_' . $current_user->ID);
 	// just redirect to the uploaded file
-	$url = get_permalink( get_option('woocommerce_myaccount_page_id') );
-	wp_safe_redirect($url);
+	$url_account= get_permalink( get_option('woocommerce_myaccount_page_id') );
+	wp_safe_redirect($url_account);
 	exit;
 
 }

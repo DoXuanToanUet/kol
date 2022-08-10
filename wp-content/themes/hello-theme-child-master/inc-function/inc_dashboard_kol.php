@@ -94,8 +94,9 @@ function kol_kol_report_content() {
 	// Role is koc/kol
 	if ( $roles[0] == 'administrator' ){
 		// $select_kol = get_field('koc_select','user_' . $current_user->ID);
-		echo "Admin report";
+		// echo "Admin report";
 		// echo "This is report";
+        require get_stylesheet_directory() . '/kol/kol_admin_report.php';
 	} 
     else{
 		require get_stylesheet_directory() . '/kol/kol_report.php';

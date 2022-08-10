@@ -576,7 +576,7 @@ if ( !function_exists( 'wcusage_getUserCouponList' ) ) {
                             if ( $usage === "" ) {
                                 $usage = '0';
                             }
-                            echo  '<p>' . $translate['wcusage_field_tr_usage'] . ': ' . $usage . '</p>' ;
+                            echo  '<p >' . $translate['wcusage_field_tr_usage'] . ': ' . $usage . '</p>' ;
                             echo  '<p>' . $translate['wcusage_field_tr_commission'] . ': ' . $combined_commission . '</p>' ;
                             $usage = get_post_meta( $postid, 'usage_count', true );
                             echo  '<p style="margin: 0 0 10px 0;"><a class="wcu-coupon-list-button" href="' . $uniqueurl . '">' . __( 'Dashboard', 'woo-coupon-usage' ) . ' <i class="far fa-arrow-alt-circle-right"></i></a></p>' ;

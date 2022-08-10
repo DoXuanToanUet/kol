@@ -69,6 +69,14 @@
   margin: 0px auto;
 }
 
+.woocommerce-account .woocommerce h2 {
+  display: none;
+}
+
+.kol-admin-report .user-manager {
+  border: 1px solid #eee;
+}
+
 @media (max-width: 575px) {
   .woocommerce-MyAccount-navigation {
     border: none;
