@@ -48,6 +48,7 @@ function wcusage_dashboard_page_section_statistics() {
   $discounts = 0;
   $total = 0;
   $commission = 0;
+  
   foreach ( $orders as $key => $order ) {
     $order_id = $order->get_id();
     $orderinfo = wc_get_order( $order_id );

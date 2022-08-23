@@ -120,3 +120,4 @@ function fwuk_reorder_my_account_menu() {
     return $neworder;
 }
 add_filter ( 'woocommerce_account_menu_items', 'fwuk_reorder_my_account_menu' );
+

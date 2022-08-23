@@ -68,7 +68,7 @@
             <?php 
                
                 foreach( $all_roles_slide as $key=>$value):
-                    ?> <option value="<?php echo $key;?>"><?php echo $value;?></option><?php
+                    ?> <option value="<?php echo $key;?>" <?php if( $key == 'saleman_user' ){ echo "selected";}?>><?php echo $value;?></option><?php
                 endforeach;
                 // echo "<pre>";
                 // var_dump(  $terms );

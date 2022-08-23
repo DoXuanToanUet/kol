@@ -22,7 +22,7 @@
     // var_dump($numcoupons);
     $kol_title_arr = [];
     $clickcount_arr = [];
-    if ( $report->have_posts() ) : while ( $report->have_posts() ) :$report->the_post();
+    if ( $report->have_posts() ) : while ( $report->have_posts() ) : $report->the_post();
         // $usage = get_post_meta( get_the_ID(), 'usage_count', true );
         // $meta = get_post_meta( get_the_ID() );
         // echo "<pre>";
@@ -45,17 +45,22 @@
             <p><?php the_title();?></p>
             <p>Số lượt click- <?php echo $clickcount;?></p>
         <?php
-    endwhile; wp_reset_postdata();  endif;
+    endwhile; wp_reset_postdata(); else:
+        ?>
+            <p>Chưa có dữ liệu</p>
+        <?php
+        
+    endif;
         // echo "<pre>";
         // var_dump($kol_title_arr, $clickcount_arr);
         // echo "</pre>";
 ?>
- <canvas id="bar-chart" width="800" height="450"></canvas>  
+ <!-- <canvas id="bar-chart" width="800" height="450"></canvas>   -->
  <script>
     // (function ($) {
     //     $(document).ready(function () {
-    //             kol_title_arr = <?php echo json_encode($kol_title_arr); ?>;
-    //             clickcount_arr = <?php echo json_encode($clickcount_arr); ?>;
+    //             kol_title_arr = <?php //echo json_encode($kol_title_arr); ?>;
+    //             clickcount_arr = <?php //echo json_encode($clickcount_arr); ?>;
     //             console.log(kol_title_arr,clickcount_arr );
     //             new Chart(document.getElementById("bar-chart"), {
     //                 type: 'bar',

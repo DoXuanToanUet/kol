@@ -60,6 +60,9 @@ if ( !function_exists( 'add_wcusage_coupon_data_fields' ) ) {
         
         if ( !$wcusage_hide_coupon_edit_user_list ) {
             $users = get_users( $args );
+            // echo "<pre>";
+            // var_dump($users);
+            // echo "</pre>";
             $user_ids = wp_list_pluck( $users, 'ID' );
             $user_names = wp_list_pluck( $users, 'user_login' );
             $get_users_list = array_combine( $user_ids, $user_names );
@@ -69,11 +72,15 @@ if ( !function_exists( 'add_wcusage_coupon_data_fields' ) ) {
         $theusers = "";
         foreach ( $get_users_list as $key => $user ) {
             $theusers .= "{ value: '" . addslashes( $key ) . "', label: '" . addslashes( $user ) . "' }, ";
+            
         }
-        
+        // echo "<pre>";
+        // var_dump($theusers);
+        // echo "</pre>";
         if ( isset( $_GET['post'] ) ) {
             $post_id = $_GET['post'];
             $getcurrentcouponuser = get_post_meta( $post_id, 'wcu_select_coupon_user' );
+            // var_dump($getcurrentcouponuser);
         } else {
             $getcurrentcouponuser = "";
         }
@@ -102,6 +109,7 @@ if ( !function_exists( 'add_wcusage_coupon_data_fields' ) ) {
           var yerler = [ <?php 
         echo  $theusers ;
         ?> ];
+        console.log(yerler);
           jQuery("#wcu_select_coupon_user_visual").autocomplete({
               source: yerler,
               focus: function (event, ui) {

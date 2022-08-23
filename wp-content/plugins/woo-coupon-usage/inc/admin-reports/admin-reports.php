@@ -906,7 +906,7 @@ if ( !function_exists( 'wcusage_admin_reports_page_html' ) ) {
 
       <?php 
         
-        if ( wcu_fs()->can_use_premium_code() ) {
+        // if ( wcu_fs()->can_use_premium_code() ) {
             ?>
         <?php 
             $randomfilename = substr( md5( uniqid( mt_rand(), true ) ), 0, 8 );
@@ -933,7 +933,7 @@ if ( !function_exists( 'wcusage_admin_reports_page_html' ) ) {
         });
         </script>
       <?php 
-        }
+        // }
         
         ?>
 

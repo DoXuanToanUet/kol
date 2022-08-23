@@ -37,7 +37,11 @@
   padding-left: 0px;
 }
 
-.woocommerce-MyAccount-navigation li.is-active a {
+.woocommerce-MyAccount-navigation li {
+  padding-left: 10px;
+}
+
+.woocommerce-MyAccount-navigation li.is-active {
   background: #f3f4f8;
 }
 
@@ -74,12 +78,78 @@
 }
 
 .kol-admin-report .user-manager {
-  border: 1px solid #eee;
+  -webkit-box-shadow: 0 1px 4px 0 #0002;
+          box-shadow: 0 1px 4px 0 #0002;
+  border-radius: 4px;
+  background: #fff;
+}
+
+.woocommerce-MyAccount-navigation li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.woocommerce-MyAccount-navigation svg {
+  width: 15px;
+  height: 15px;
+}
+
+.woocommerce-account .woocommerce {
+  background: #f6f6f6;
+}
+
+.woocommerce-account .woocommerce-MyAccount-navigation {
+  background: #fff;
+  width: 300px;
+}
+
+.woocommerce-account .woocommerce-form-login {
+  background: #fff;
+}
+
+.woocommerce-account .woocommerce-MyAccount-content {
+  width: calc(100% - 300px);
+}
+
+.woocommerce-account .dashboard-content-wrapper {
+  width: 1104px;
+  padding-top: 16px;
+  margin: 16px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.woocommerce-account .kol-subtitle {
+  color: #000;
 }
 
 @media (max-width: 575px) {
   .woocommerce-MyAccount-navigation {
     border: none;
+  }
+  .woocommerce-account .woocommerce-MyAccount-navigation {
+    background: #fff;
+    width: 100%;
+  }
+  .woocommerce-account .woocommerce-MyAccount-content {
+    width: 100%;
+  }
+  .woocommerce-account .dashboard-content-wrapper {
+    width: unset;
+    padding: 0px;
+  }
+  .woocommerce-account .kol-subtitle {
+    color: #000;
+  }
+  .woocommerce {
+    background: #fff;
   }
 }
 /*# sourceMappingURL=custom.css.map */

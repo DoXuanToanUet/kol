@@ -35,10 +35,11 @@
         list-style: none;
         padding-left: 0px;
     }
+    li{
+        padding-left: 10px;
+    }
     li.is-active {
-        a{
-            background: #f3f4f8;
-        }
+        background: #f3f4f8;
     }
     li a{
         color: #000;
@@ -75,11 +76,72 @@
 }
 .kol-admin-report{
     .user-manager{
-        border: 1px solid #eee;
+        box-shadow: 0 1px 4px 0 #0002;
+        border-radius: 4px;
+        background: #fff;
     }
 }
+.woocommerce-MyAccount-navigation{
+    li{
+        display: flex;
+        align-items: center;
+    }
+    svg{
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.woocommerce-account {
+    .woocommerce{
+        background: #f6f6f6;
+    }
+    .woocommerce-MyAccount-navigation{
+        background: #fff;
+        width: 300px;
+    }
+    .woocommerce-form-login{
+        background: #fff;
+    }
+    .woocommerce-MyAccount-content{
+        width: calc(100% - 300px);
+    }
+    .dashboard-content-wrapper{
+        width: 1104px;
+        padding-top: 16px;
+        margin: 16px auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .kol-subtitle{
+        color: #000;
+    }
+}
+
 @media (max-width:575px){
     .woocommerce-MyAccount-navigation{
         border:none;
     }
+    .woocommerce-account {
+        .woocommerce-MyAccount-navigation{
+            background: #fff;
+            width: 100%;
+        }
+        .woocommerce-MyAccount-content{
+            width: 100%;
+        }
+        .dashboard-content-wrapper{
+            width: unset;
+            padding: 0px;
+        }
+        .kol-subtitle{
+            color: #000;
+        }
+    }
+    .woocommerce{
+        background:#fff;
+    }
+    
 }

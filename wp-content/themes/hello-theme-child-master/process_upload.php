@@ -106,7 +106,8 @@ require_once( ABSPATH . 'wp-admin/includes/file.php' );
 
 // you can add some kind of validation here
 if( empty( $_FILES[ 'profile_picture' ] ) ) {
-	wp_die( 'No files selected.' );
+	wp_die( 'Bạn chưa chọn hình ảnh' );
+	
 }
 
 $upload = wp_handle_upload( 
@@ -118,9 +119,9 @@ if( ! empty( $upload[ 'error' ] ) ) {
 	wp_die( $upload[ 'error' ] );
 }
 $image_info = getimagesize( $upload[ 'url' ] );
-echo "<pre>";
-var_dump($image_info);
-echo "</pre>";
+// echo "<pre>";
+// var_dump($image_info);
+// echo "</pre>";
 $image_width = $image_info[0];
 $image_height = $image_info[1];
 

@@ -39,7 +39,7 @@
                 beforeSend: function () {
                 },
                 success: function (response) {
-                    // console.log(response);
+                    console.log(response);
                     if( response.success == false ){
                         $('.devRegis-alert').html(`* ${response.data.showdata}`);
                     } else if(response.success == true ){
@@ -162,24 +162,54 @@
           
         // });
        
-         //Phần tab chính sách phát đại lí, cá nhân
-        function activeTab(obj) {
-            $(".kol-tab .common-tab").removeClass("active-tab");
-            let id = $(obj).data("tab");
-            $(obj).addClass("active-tab");
-            $(".kol-tab-content").hide();
-            // console.log(id);
-            $('.'+id).show();
-        }
-        $('.kol-tab .common-tab').click(function (e) {
-            // console.log(e.target)
-            e.preventDefault();
-            activeTab(this);
+        $('#admin_kol_select').on('change',function () {
+            // console.log("on change");
+            var ajax_url = $("input[name='url_ajax']").val();
+            var choose_kol = $("#admin_kol_select option:selected").val();
+            console.log(choose_kol);
+            $.ajax({
+                type: "post",
+                dataType: "json",
+                async: true,
+                url: ajax_url,
+                data: {
+                    action:'admin_kol_dashboard',
+                    choose_kol:choose_kol,
+                },
+                beforeSend: function () {
+                    // $('.tailor-loading').show();
+                },
+                success: function (response) {
+                   console.log(response);
+                   $('.kol-tab-content').html(response.data);
+                //    $('.show').html(`${response.data}`);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    //Làm gì đó khi có lỗi xảy ra
+                    console.log('The following error occured: ' + textStatus, errorThrown);
+                }
+            });
+        });
 
-        })
-        activeTab('.kol-tab .common-tab:first-child');
-    
-       
+        //Phần tab chính sách phát đại lí, cá nhân
+        // function activeTab(obj) {
+        //     $(".kol-tab .common-tab").removeClass("active-tab");
+        //     let id = $(obj).data("tab");
+        //     $(obj).addClass("active-tab");
+        //     $(".kol-tab-content").hide();
+        //     // console.log(id);
+        //     $('.'+id).show();
+        // }
+        // $('.kol-tab .common-tab').click(function (e) {
+        //     // console.log(e.target)
+        //     e.preventDefault();
+        //     activeTab(this);
+
+        // })
+        // activeTab('.kol-tab .common-tab:first-child');
+
+
+        
     })
     
 })(jQuery);

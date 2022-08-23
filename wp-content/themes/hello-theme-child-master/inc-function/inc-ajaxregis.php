@@ -77,6 +77,17 @@ function regisForm(){
                 )
             );
             
+            $coupon = array(
+                'post_title'  => 'TNT'.date("dmYHis"),
+                'post_type'   => 'shop_coupon',
+                'post_status' => 'publish',
+                // 'post_author' => ,
+                // 'wcu_select_coupon_user'=> wp_get_current_user()->ID
+            );
+           
+            $coupon_id = wp_insert_post($coupon);
+            // var_dump($regis_user_id);
+            add_post_meta( $coupon_id,'wcu_select_coupon_user', $regis_user_id);
             $success = 'Bạn đã đăng ký thành công!';
             wp_send_json_success(array(
                 "message"=>"success",
