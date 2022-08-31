@@ -83,7 +83,14 @@
         <?php wp_nonce_field( 'ajax-regis-nonce', 'securityregis' ); ?>
         <input type="hidden" name="url_ajax" value="<?= admin_url('admin-ajax.php');?>">
     </form>
+    <?php
+    //     $cookie_name = "user";
+    //     $cookie_value = "David Vinh";
+    //     // 86400 = 1 day
+    //     setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/");
+        // echo $_COOKIE['user'];
     
+    ?>
 </div>
 <?php endif; ?>
 <?php 

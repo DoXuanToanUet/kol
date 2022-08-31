@@ -148,6 +148,24 @@ require get_stylesheet_directory() . '/inc-function/inc-ajaxregis.php';
 require get_stylesheet_directory() . '/inc-function/inc_dashboard_kol.php';
 require get_stylesheet_directory() . '/inc-function/inc_kol.php';
 require get_stylesheet_directory() . '/inc-function/custom-avartar.php';
+// require get_stylesheet_directory() . '/inc-function/inc_acf_roles.php';
 
 
 
+//Theme Options
+// if (function_exists('acf_add_options_page')) {
+
+//   acf_add_options_page(array(
+//       'page_title' => 'Coupon Settings',
+//       'menu_title' => 'Coupon Settings',
+//       'menu_slug'  => 'coupon-general-settings',
+//       'capability' => 'edit_posts',
+//       'redirect'   => false
+//   ));
+
+//   // acf_add_options_sub_page(array(
+//   //     'page_title'  => 'Theme Header Settings',
+//   //     'menu_title'  => 'Header',
+//   //     'parent_slug' => 'theme-general-settings',
+//   // ));
+// }

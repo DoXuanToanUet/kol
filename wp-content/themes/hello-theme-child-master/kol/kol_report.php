@@ -22,6 +22,7 @@
     // var_dump($numcoupons);
     $kol_title_arr = [];
     $clickcount_arr = [];
+    ?><div class="cp-wrapper"><?php
     if ( $report->have_posts() ) : while ( $report->have_posts() ) : $report->the_post();
         // $usage = get_post_meta( get_the_ID(), 'usage_count', true );
         // $meta = get_post_meta( get_the_ID() );
@@ -41,11 +42,16 @@
         // $kol_title = get_the_title();
         // array_push($kol_title_arr ,  $kol_title);
         // array_push($clickcount_arr , $clickcount );
-        ?>
-            <p><?php the_title();?></p>
-            <p>Số lượt click- <?php echo $clickcount;?></p>
+        ?>  
+           
+                <div class="dsh-click">
+                    <p>Mã : <?php the_title();?></p>
+                    <p>Số lượt click : <?php echo $clickcount;?></p>
+                </div>
+           
         <?php
     endwhile; wp_reset_postdata(); else:
+        ?></div><?php
         ?>
             <p>Chưa có dữ liệu</p>
         <?php

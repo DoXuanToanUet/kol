@@ -69,6 +69,8 @@ function admin_kol_dashboard(){
                     <th scope="col">#</th>
                     <th scope="col">Name</th>
                     <th scope="col">Coupon</th>
+                    <th scope="col">Lượt click</th>
+                    <th scope="col">Lượt chuyển đổi</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,10 +91,16 @@ function admin_kol_dashboard(){
                         );
                         $report_kol_coupon = new WP_Query($args_kol_coupon);
                         $report_kol_title =  $value->user_nicename;
+                        // $thepageurl = wcusage_get_coupon_shortcode_page(1);
                 ?>
                     <tr>
                         <td><?= $i;?></td>
-                        <td><?php echo $value->user_nicename; ?></td>
+                        <td>
+                            <?php if ( $report_kol_coupon->have_posts() ) : while ( $report_kol_coupon->have_posts() ) :$report_kol_coupon->the_post(); ?>
+                                <a href="<?php echo home_url().'/coupon/?couponid='.get_the_title(); ?>" target="_blank">
+                                    <?php echo $value->user_nicename; ?></td>
+                                </a>
+                            <?php endwhile; wp_reset_postdata();  endif; ?>
                         <td>
                             <?php 
                                 $kol_click_count= 0;
@@ -112,14 +120,17 @@ function admin_kol_dashboard(){
                                     )
                                 );
                                 $clickcount = count($result2);
-                                
+                                $getconversions = $wpdb->get_results( "SELECT * FROM " . $table_name . " WHERE couponid = " . $id . " AND converted = 1 ORDER BY id ASC" );
+                                $usage = count($getconversions);
+                                // echo "<pre>";
+                                // var_dump($getconversions);
+                                // echo "</pre>";
                                 // array_push( $report_kol_click, $clickcount);
                                 // var_dump($clickcount);
                                 ?>
                                     <div >
                                         <span><?php the_title();?></span>
-                                        <span>- <?php echo $clickcount;?></span>
-                                        
+                                        <!-- <span>- <?php //echo $clickcount;?></span> -->
                                     </div>
                                 <?php
                                 $kol_click_count = $kol_click_count+ $clickcount;
@@ -131,6 +142,8 @@ function admin_kol_dashboard(){
                                 
                             ?>
                         </td>
+                        <td><?php echo $kol_click_count; ?></td>
+                        <td><?php echo $usage; ?></td>
                     
                     </tr>
                     

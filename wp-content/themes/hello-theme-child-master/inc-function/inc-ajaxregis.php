@@ -77,17 +77,39 @@ function regisForm(){
                 )
             );
             
-            $coupon = array(
-                'post_title'  => 'TNT'.date("dmYHis"),
-                'post_type'   => 'shop_coupon',
-                'post_status' => 'publish',
-                // 'post_author' => ,
-                // 'wcu_select_coupon_user'=> wp_get_current_user()->ID
-            );
-           
-            $coupon_id = wp_insert_post($coupon);
-            // var_dump($regis_user_id);
-            add_post_meta( $coupon_id,'wcu_select_coupon_user', $regis_user_id);
+            // $coupon_role = get_field('coupon_role_rp','option');
+            // foreach ($coupon_role as $key => $value) {
+            //     $coupon_role = $value['coupon_role'][0];
+            //     $coupon_name  = $value['coupon_role_name'];
+            //     if( $coupon_role == $kol_user){
+                    $role_name_post = array(
+                        'kol_user'          => 'KOL',
+                        'partner_user'      =>  'PAT',
+                        'saleman_user'      =>  'SM',
+                        'distributor_user'  => 'DT'
+                    );
+                    foreach ($role_name_post as $key => $value) {
+                        if( $key === $kol_user ){
+                            $coupon_symbol = $value;
+                        }
+                    }
+                    $coupon = array(
+                        'post_title'  => 'TNT'.$coupon_symbol.$regis_user_id.date('is'),
+                        'post_type'   => 'shop_coupon',
+                        'post_status' => 'publish',
+                        // 'post_author' => ,
+                        // 'wcu_select_coupon_user'=> wp_get_current_user()->ID
+                    );
+                   
+                    $coupon_id = wp_insert_post($coupon);   
+                    // var_dump($regis_user_id);
+                    add_post_meta( $coupon_id,'wcu_select_coupon_user', $regis_user_id);
+                // }
+                // echo "<pre>";
+                // var_dump($value['coupon_role'][0]);
+                // echo "</pre>";
+            // }
+ 
             $success = 'Bạn đã đăng ký thành công!';
             wp_send_json_success(array(
                 "message"=>"success",

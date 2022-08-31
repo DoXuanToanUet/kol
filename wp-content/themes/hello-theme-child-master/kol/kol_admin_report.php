@@ -94,5 +94,15 @@
         </div>
     </div>
 </div>
+<?php 
+    // $coupon_role = get_field('coupon_role_rp','option');
+    // foreach ($coupon_role as $key => $value) {
+    //     echo "<pre>";
+    //     var_dump($value['coupon_role_name']);
+    //     echo "</pre>";
+    // }
+ 
+
+?>
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/plugin/xls/jquery.dataTables.min.js'; ?>"></script>
 <script src="<?php echo get_stylesheet_directory_uri().'/assets/plugin//chart.min.js'; ?>"></script>
