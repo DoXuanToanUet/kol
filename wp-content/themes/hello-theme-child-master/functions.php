@@ -169,3 +169,36 @@ require get_stylesheet_directory() . '/inc-function/custom-avartar.php';
 //   //     'parent_slug' => 'theme-general-settings',
 //   // ));
 // }
+
+
+// API get user custom
+add_action('rest_api_init', 'universityRegisterSearch');
+
+function universityRegisterSearch(){
+  register_rest_route('techwings/v1', 'coupon', array(
+      'methods' => 'GET',
+      'callback' => 'phoneResult',
+      // 'permission_callback' => function () {
+      //     return current_user_can( 'edit_others_posts' );
+      //   }
+    ));
+}
+function phoneResult($data){
+  $args = array(
+    // 'role' => 'Contributor',
+    'orderby' => 'post_count',
+    'order' => 'DESC',
+  );
+  $wp_user_query = new WP_User_Query( $args );
+  // Get the results
+  $author_arr = [];
+  $authors = $wp_user_query->get_results();
+  foreach ($authors as $author):
+    $author_info = get_userdata($author->ID);
+    array_push( $author_arr , array(
+      'user_login' => $author_info->user_login,
+      'web' => get_field('user_web',"user_".$author->ID)
+    ));
+  endforeach;
+  return $author_arr;
+}
